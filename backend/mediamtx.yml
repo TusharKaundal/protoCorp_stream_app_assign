@@ -1,0 +1,24 @@
+# config file for mediamtx
+
+hls: yes
+hlsAddress: :8888
+hlsVariant: lowLatency
+hlsSegmentCount: 7
+hlsAllowOrigins: ["*"]
+hlsSegmentDuration: 1s
+hlsEncryption: no
+hlsDirectory: ./hls
+
+paths:
+  cam1:
+    source: rtsp://13.60.76.79:8554/live2
+  cam2:
+    source: rtsp://13.60.76.79:8554/live2
+  cam3:
+    source: rtsp://13.60.76.79:8554/live2
+  cam4:
+    source: rtsp://13.60.76.79:8554/live2
+  cam5:
+    source: rtsp://13.60.76.79:8554/live2
+  cam6:
+    source: rtsp://13.60.76.79:8554/live2
