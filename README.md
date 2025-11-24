@@ -9,6 +9,10 @@ A real-time multi-stream video monitoring dashboard that synchronizes 5-6 HLS vi
 - **Low-Latency HLS**: Optimized for minimal delay using HLS.js with low-latency mode
 - **Responsive Design**: Modern, responsive UI built with React and Tailwind CSS
 
+## 🔗 Live Workable Link
+
+- **Live Application**: [https://proto-corp-stream-app-assign.vercel.app/](https://proto-corp-stream-app-assign.vercel.app/)
+
 ## 🏗️ Architecture Overview
 
 ### System Components
@@ -379,10 +383,6 @@ npm run build
 ```
 
 The built files will be in the `dist` directory, ready for deployment.
-
-### Live Workable Link
-
-🔗 **Live Application**: [Add your deployment URL here]
 
 ## 📁 Project Structure
 
