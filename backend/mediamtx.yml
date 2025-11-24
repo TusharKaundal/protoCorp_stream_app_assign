@@ -11,14 +11,14 @@ hlsDirectory: ./hls
 
 paths:
   cam1:
-    source: rtsp://13.60.76.79:8554/live2
+    source: rtsp://13.60.76.79:8554/live1
   cam2:
-    source: rtsp://13.60.76.79:8554/live2
+    source: rtsp://13.60.76.79:8554/live1
   cam3:
-    source: rtsp://13.60.76.79:8554/live2
+    source: rtsp://13.60.76.79:8554/live1
   cam4:
-    source: rtsp://13.60.76.79:8554/live2
+    source: rtsp://13.60.76.79:8554/live1
   cam5:
-    source: rtsp://13.60.76.79:8554/live2
+    source: rtsp://13.60.76.79:8554/live1
   cam6:
-    source: rtsp://13.60.76.79:8554/live2
+    source: rtsp://13.60.76.79:8554/live1
