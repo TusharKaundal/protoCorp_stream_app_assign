@@ -153,7 +153,6 @@ App.jsx
 const [streams, setStreams] = useState([]);
 const { loadPlayer, syncAll } = useStreamSync({
   totalStreams: streams.length,
-  driftTolerance: 0.2,
 });
 
 // Fetch streams on mount
@@ -252,7 +251,7 @@ const syncAll = async () => {
   // set currentTime for each
   players.forEach((video) => {
     const dt = Math.abs((video.currentTime || 0) - targetTime);
-    if (dt > 0.6) {
+    if (dt > 0.1) {
       video.currentTime = targetTime;
     }
   });
@@ -284,11 +283,9 @@ const getMaster = () => {
     const currentTime = video.currentTime;
     const distanceFromEdge = Math.abs(bufferedEnd - currentTime);
 
-    if (distanceFromEdge <= driftTolerance) {
-      if (distanceFromEdge < bestLiveEdgeDistance) {
-        bestLiveEdgeDistance = distanceFromEdge;
-        candidate = video;
-      }
+    if (distanceFromEdge < bestLiveEdgeDistance) {
+      bestLiveEdgeDistance = distanceFromEdge;
+      candidate = video;
     }
   });
 
@@ -298,7 +295,7 @@ const getMaster = () => {
 
 **Synchronization Strategy:**
 
-1. **Master Selection**: Chooses the video within the `tolerance` here => `0.2s`
+1. **Master Selection**: Chooses the video minimum `drift` from `buffer data`
 2. **Time Alignment**: Sets all other videos' `currentTime` to match the master
 3. **State Preservation**: Maintains play/pause state during sync
 
@@ -347,7 +344,16 @@ const getMaster = () => {
    ```bash
    npm start
    ```
-   The backend API will be available at `http://localhost:3000`
+
+#### For Backend Setup you can run Docker file also
+
+1. Just run below docker command to start server:
+
+   ```bash
+   docker compose up -d
+   ```
+
+The backend API will be available at `http://localhost:3000`
 
 ### Frontend Setup
 
