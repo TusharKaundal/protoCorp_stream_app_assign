@@ -11,7 +11,6 @@ const DashBoard = () => {
   const [streams, setStreams] = useState([]);
   const { loadPlayer, syncAll } = useStreamSync({
     totalStreams: streams.length,
-    driftTolerance: 0.2,
   });
 
   useEffect(() => {
@@ -64,7 +63,7 @@ const DashBoard = () => {
               key={stream.name + "_" + idx}
             >
               <HlsVideoPlayer stream={stream} registerVideo={loadPlayer} />
-              <h3 className="pl-1">{stream.name}</h3>
+              <h3 className="pl-1">cam {idx + 1}</h3>
             </div>
           ))}
         </div>

@@ -1,9 +1,6 @@
 import { useRef } from "react";
 
-export default function useStreamSync({
-  totalStreams = 6,
-  driftTolerance = 0.2,
-}) {
+export default function useStreamSync({ totalStreams = 6 }) {
   const playersRef = useRef([]);
 
   const loadPlayer = (video) => {
@@ -32,7 +29,7 @@ export default function useStreamSync({
     // set currentTime for each
     players.forEach((video) => {
       const dt = Math.abs((video.currentTime || 0) - targetTime);
-      if (dt > 0.6) {
+      if (dt > 0.1) {
         video.currentTime = targetTime;
       }
     });
@@ -64,12 +61,9 @@ export default function useStreamSync({
       const currentTime = video.currentTime;
       const distanceFromEdge = Math.abs(bufferedEnd - currentTime);
 
-      if (distanceFromEdge <= driftTolerance) {
-        
-        if (distanceFromEdge < bestLiveEdgeDistance) {
-          bestLiveEdgeDistance = distanceFromEdge;
-          candidate = video;
-        }
+      if (distanceFromEdge < bestLiveEdgeDistance) {
+        bestLiveEdgeDistance = distanceFromEdge;
+        candidate = video;
       }
     });
 
